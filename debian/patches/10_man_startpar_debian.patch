@@ -1,0 +1,29 @@
+From: Debian sysvinit maintainers
+ <debian-init-diversity@chiark.greenend.org.uk>
+Date: Thu, 23 May 2019 00:51:40 +0000
+Subject: _man_startpar_debian
+
+Purpose: Adjust startpar(8) for Debian.
+  Correct startpar SEE ALSO section, and Use correct path to runlevel directories.
+Fixes:   Missing and unavailable references
+Status:  Not submitted upstream
+Bug-Debian: http://bugs.debian.org/678260
+Forwarded: not-needed
+Reviewed-By: Petter Reinholdtsne <pere@hungry.com>
+Last-Update: 2014-03-28
+---
+ startpar.1 | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/startpar.1 b/startpar.1
+index dc8aa41..f383be8 100644
+--- a/startpar.1
++++ b/startpar.1
+@@ -150,7 +150,6 @@ The version number will be printed and startpar then immediately exits.
+ .SH SEE ALSO
+ .BR init (8),
+ .BR insserv (8),
+-.BR startproc (8)
+ 
+ .SH COPYRIGHT
+ 2003,2004 SuSE Linux AG, Nuernberg, Germany.

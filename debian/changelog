@@ -1,0 +1,256 @@
+startpar (0.65-1) unstable; urgency=medium
+
+  * New upstream version 0.65.
+     - includes testsuite fixes (Closes: #931976)
+  * Restore autopkgtest using testsuite.
+  * Keep startpar binary in /bin despite upstream change to use PREFIX.
+  * d/control:
+     - remove Dmitry from Uploaders. (Closes: #991034)
+     - add myself to Uploaders
+     - update to Standards Version 4.6.0 (no changes)
+
+ -- Mark Hindley <leepen@debian.org>  Thu, 23 Sep 2021 11:03:40 +0100
+
+startpar (0.64-3) unstable; urgency=medium
+
+  * Temporary disable tests to actually resolve migration
+
+ -- Dmitry Bogatov <KAction@debian.org>  Sun, 22 Sep 2019 03:10:50 +0000
+
+startpar (0.64-2) unstable; urgency=medium
+
+  * Resolve insserv=1.21.0 migration loop
+
+ -- Dmitry Bogatov <KAction@debian.org>  Tue, 17 Sep 2019 23:56:53 +0000
+
+startpar (0.64-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #588666)
+  * Prevent warnings on stderr from breaking autopkgtests (Closes: #934961)
+
+ -- Dmitry Bogatov <KAction@debian.org>  Thu, 12 Sep 2019 07:08:43 +0000
+
+startpar (0.64~beta-1) unstable; urgency=medium
+
+  * New upstream release (Closes: #931977)
+  * Refresh patches, drop applied upstream
+  * Stricten build/test dependency on insserv(8) as required for testsuite
+
+ -- Dmitry Bogatov <KAction@debian.org>  Mon, 26 Aug 2019 22:17:44 +0000
+
+startpar (0.63-2) unstable; urgency=medium
+
+  * Fix testsuite compatibility with insserv (>= 1.20) (Closes: #934945)
+
+ -- Dmitry Bogatov <KAction@debian.org>  Mon, 19 Aug 2019 12:11:36 +0000
+
+startpar (0.63-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #926545)
+  * Upload to unstable.
+  * [97ac38cb] Rediff patches
+  * [c2e9aeef] Drop code moving startpar from /sbin to /bin (upstreamed)
+  * [94f12bfa] Update standards version to 4.4.0
+  * [f71d9a1e] Update debhelper compat version to 12.
+  * [eac28929] Set "unstable" as target distribution in CI config.
+  * [bdf71806] Drop patch checking for alternative locations of insserv.
+  * [5c68e10d] wrap-and-sort -sta
+
+ -- Dmitry Bogatov <KAction@debian.org>  Fri, 12 Jul 2019 05:23:26 +0000
+
+startpar (0.63~beta-1) experimental; urgency=medium
+
+  * New upstream release.
+  * [753ddcab] Refresh patches
+  * [f05584d5] Install binary into /bin
+
+ -- Dmitry Bogatov <KAction@debian.org>  Thu, 23 May 2019 01:06:10 +0000
+
+startpar (0.62-1) experimental; urgency=medium
+
+  * New upstream release (Closes: #924117)
+  * Drop patches, applied upstream:
+    + 81_timeout.patch
+    + 99-fix-spelling-error.patch
+  * Remove `30_testsuite_insserv.patch' -- we can assume,
+    that `/sbin/insserv' exists.
+  * Re-export upstream signing key without extra signatures.
+  * Use secure URI in Homepage field.
+  * Use `startpar.maintscript' instead of manual calls to
+    `dpkg-maintscript-helper'.
+  * Bump standards version to 4.3.0
+  * Install startpar(8) into /sbin (Closes: #926544)
+  * Simplify `debian/rules'.
+
+ -- Dmitry Bogatov <KAction@debian.org>  Wed, 10 Apr 2019 11:16:46 +0000
+
+startpar (0.61-1) unstable; urgency=medium
+
+  * Upload to unstable
+  * New upstream release
+  * Update upstream signing key
+  * Remove obsolete conffile (Closes: #768939)
+  * Fix FTBFS with glibc-2.28 (Closes: #915962)
+    + Thanks: Samuel Thibault <sthibault@debian.org>
+  * Remove obsolete XS-Testsuite field from `debian/control'
+
+ -- Dmitry Bogatov <KAction@debian.org>  Sat, 08 Dec 2018 21:38:44 +0000
+
+startpar (0.61~beta-1) experimental; urgency=medium
+
+  * New upstream release (Closes: #679630, #609959, #696359, #763703)
+  * Update `debian/watch' file
+  * Refresh patches
+    + drop `20_testuite_nostderr.patch' -- applied upstream
+    + drop `upstart_support.patch' -- upstart no longer in Debian
+    + drop `83_hardening.patch' -- applied upstream
+  * Remove references to `upstart' in `debian/rules'
+  * Update Maintainer field in `debian/control' (Closes: #834283)
+  * Add myself into list of uploaders
+  * Update Vcs-* fields in debian/control.
+  * Update standards version to 4.2.1 (no changes needed)
+  * Drop versioned dependency on `quilt', which is satisfied even on
+    old-old-stable.
+  * Bump compat version to 11 (no changes needed)
+  * Build-depend on `debhelper-compat' (obsoletes `debian/compat')
+  * Remove `unstart' init script
+  * Fix spelling errors in source
+  * Use https when referring to copyright format
+
+ -- Dmitry Bogatov <KAction@debian.org>  Sat, 24 Nov 2018 23:55:47 +0000
+
+startpar (0.59-4) unstable; urgency=medium
+
+  * Acknowledge NMUs.
+  * In test suite, look for insserv in /usr/lib/insserv/insserv
+    too (Closes: #830557).  Patch from Jon Boden and Ubuntu.
+  * Avoid running test suite twice during build and do not run tests
+    when DEB_BUILD_OPTIONS contains nocheck (Closes: #794138).  Patch
+    from Helmut Grohne.
+  * Comment out description from the startpar upstart job, to disable
+    plymouth-upstart-bridge boot messages with "Starting/Stopping
+    startpar bridge" for every upstart job (Closes: #747189).  Patch
+    from Dimitri John Ledkov and Ubuntu.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Wed, 15 Nov 2017 09:57:10 +0100
+
+startpar (0.59-3.2) unstable; urgency=medium
+
+  [ Manuel A. Fernandez Montecelo ]
+  * Non-maintainer upload.
+  * Update (remove) all Uploaders except Petter Reinholdtsen, according to
+    this changelog they never actually contributed to this package, the
+    same was done with sysvinit (the lead among the group of packages, see
+    #834283 and #811377), and the package is RFAed.  The people removed are:
+    - Henrique de Moraes Holschuh
+    - Kel Modderman
+    - Roger Leigh (Closes: #869350)
+    - Thomas Goirand
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS. (Closes: #794138, #816186)
+    + Pass host arch CC to Makefile.
+
+ -- Manuel A. Fernandez Montecelo <mafm@debian.org>  Tue, 07 Nov 2017 00:17:03 +0100
+
+startpar (0.59-3.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Jon Boden ]
+  * Add insserv to Build-Depends. (Closes: #830549)
+
+  [ Christian Hofstaedtler ]
+  * Replace obsolete hardening-wrapper with buildflags.mk.
+    (Closes: #831605)
+
+  [ Michael Biebl ]
+  * Demote priority to optional.
+  * Mark startpar as Multi-Arch: foreign. (Closes: #804503)
+
+ -- Michael Biebl <biebl@debian.org>  Thu, 28 Jul 2016 18:05:22 +0200
+
+startpar (0.59-3) unstable; urgency=low
+
+  * Adjust 83_hardening.patch to a version more suitable for upstream.
+  * New patch 20_testuite_nostderr.patch to adjust test suite to not
+    print anything to stderr.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Thu, 17 Apr 2014 09:16:14 +0200
+
+startpar (0.59-2) unstable; urgency=low
+
+  * Remove obsolete lintian overrides.
+  * Add GPG signature checking to watch file.
+  * Use canonical git URL in Vcs-Git control field.
+  * Extend long package description a bit.
+  * Remove 71_signalfd.patch now applied upstream.
+  * Combine 75_man_startpar_see_also.patch and 82_man_startpar_rc-dir.patch
+    into 10_man_startpar_debian.patch, including Debian related edits to
+    the startpar manual page.
+  * Adjust autopkgtest check to not try to build the source before
+    running the test suite.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sat, 12 Apr 2014 19:10:15 +0200
+
+startpar (0.59-1) unstable; urgency=low
+
+  * New upstream release.
+    - Include test suite.
+    - Includes our patches 70_not_suse.patch, 72_path_max.patch,
+      73_lfs_cflags.patch, 74_man_startpar_iorate.patch,
+      76_startpar_ldflags.patch, 77_startpar_skip_reason.patch and
+      79_startpar_kfreebsd_mlockall.patch.
+  * Add autopkgtest self test code using the test suite available in the
+    next upstream version of startpar.  Also run test suite during build.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Thu, 10 Apr 2014 11:35:42 +0200
+
+startpar (0.58-5) unstable; urgency=low
+
+  * Upload final startpar split from sysvinit-utils to unstable.
+  * Fix build problem on !linux systems (Closes: #743456).
+  * Correct Vcs-Browser URL in control file, add missing .git ending.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Mon, 07 Apr 2014 11:49:38 +0200
+
+startpar (0.58-4) experimental; urgency=low
+
+  * Undo renaming done in 0.58-2, and instead conflict with sysvinit-utils,
+    to avoid inconsistent upstart configuration during upgrades.
+    No need for postinst code to remove /etc/init/startpar-injector.conf,
+    which was never installed by mistake.  This version breaks/replaces
+    sysvinit-utils (<< 2.88dsf-52) to take over the files
+    /usr/share/man/man8/startpar-upstart-inject.8.gz,
+    /usr/share/man/man8/startpar.8.gz and
+    /etc/init/startpar-bridge.conf from that soon to be uploaded package.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Sun, 06 Apr 2014 10:08:28 +0200
+
+startpar (0.58-3) unstable; urgency=low
+
+  * Adjust when messages are printed and how time outs are handled
+    with parallel booting (Closes: #678260).  Patch from Em DeEm.
+  * Use correct path to rcX.d/ directories in startpar(8)
+    (Closes: #570958).
+  * Add hardening flags to the build.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Fri, 28 Mar 2014 23:38:54 +0100
+
+startpar (0.58-2) unstable; urgency=low
+
+  * Rename startpar-upstart-inject to startpar-upstart-injector,
+    startpar(8) to startpar(8init) and startpar-bridge
+    to startpar-upstart-injector to avoid having to conflict with
+    sysvinit-utils (Closes: #742822).
+
+ -- Petter Reinholdtsen <pere@debian.org>  Thu, 27 Mar 2014 23:17:05 +0100
+
+startpar (0.58-1) unstable; urgency=low
+
+  * Split out startpar from sysvinit-tools for easier maintenance.
+  * Place startpar binary in /lib/startpar/ to reduce the chance of anyone
+    calling it outside the boot system.
+  * Depend on hardening-wrapper and enable it in the rules file.
+
+ -- Petter Reinholdtsen <pere@debian.org>  Wed, 19 Feb 2014 22:15:02 +0100

@@ -1,0 +1,5 @@
+Tests: testsuite
+Restrictions: allow-stderr
+Depends:
+ insserv,
+ @,

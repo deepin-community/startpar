@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,7 @@
+ INSTALL_DATA	= install -m 644
+ DESTDIR		=
+ PREFIX		?= /usr
+-sbindir		= $(PREFIX)/bin
++sbindir		= /bin
+ mandir		= $(PREFIX)/share/man
+ man1dir		= $(mandir)/man1
+ 

@@ -1,0 +1,30 @@
+Source: startpar
+Section: admin
+Priority: optional
+Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+Uploaders:
+ Petter Reinholdtsen <pere@debian.org>,
+ Mark Hindley <leepen@debian.org>,
+Build-Depends:
+ debhelper-compat (= 12),
+Standards-Version: 4.6.0
+Homepage: https://savannah.nongnu.org/projects/sysvinit
+Vcs-Git: https://salsa.debian.org/debian/startpar.git
+Vcs-Browser: https://salsa.debian.org/debian/startpar
+
+Package: startpar
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ insserv,
+ sysv-rc,
+Breaks:
+ sysvinit-utils (<< 2.88dsf-52),
+Replaces:
+ sysvinit-utils (<< 2.88dsf-52),
+Description: run processes in parallel and multiplex their output
+ Used by the sysv-rc boot system executor to run init.d scripts in parallel
+ while making sure the script output is not completely messed up.

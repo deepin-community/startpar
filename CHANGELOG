@@ -1,0 +1,96 @@
+startpar 0.65
+===============
+
+* Make sure startpar testsuite can find insserv
+  executable in /usr/sbin or /sbin.
+  Added PREFIX variable to Makefile and testsuite to
+  make location of startpar and insserv more flexible.
+
+startpar 0.64
+===============
+
+* Added sys/sysmacros.h header on non-FreeBSD systems to
+  make it possible to use makedev().
+
+* Fixed typos in manual page. Patches provided by Dmitry Bogatov.
+
+* Make sure we do not try to use unallocated memory when detecting consoles.
+
+* Fixed handing of overriding location of init.d on the command line.
+
+* Fixed testsuite script to give better results to tests. Numbered
+  tests so mixed "success" and "failure" messages would be more clear.
+
+* Updated testsuite to work with insserv 1.20.0.
+
+* Fixed regression which could cause jobs to run in serial (interactive
+  mode) instead of parallel when devpts check failed. 
+  Should greatly increase performance on affected systems.
+
+* Added -n flag which will prefix output from running jobs with the
+  name of the executable being run.
+
+* Added optimization flag to startpar (-O2). Can
+  be overridden by passing "OPT" variable to Makefile. 
+
+* Made sure output lines from parallel jobs end with a newline character.
+
+startpar 0.63
+===============
+
+* Used constants for some strings instead of checking sizeof().
+
+* Made makefile parsing more fault talerant so the parsing function
+  returns an error instead of immediately calling exit().
+
+* Updated manual page with new Makefile-style flag and location 
+  information.
+
+* Switched manual page location for startpar from
+  section 8 (admin tools) to 1 (general system tools)
+  since it can be used by anyone.
+
+* Move startpar install location from /sbin to /bin since it can
+be used by regular users for some tasks. 
+
+
+startpar 0.62
+===============
+
+* Fixed typos in startpar.c error messages.
+  Moves Debian patch 99 upstream.
+* Applied Debian patches 81_timeout and 83_hardening upstream.
+* Minor code clean-up in makeboot.c to remove duplicate
+  instructions.
+* Added changelog to the tarball.
+
+
+startpar 0.61
+===============
+
+* Applied signal patch from Petter Heinholdtsen which should avoid
+  masking SIGINT to services.
+  Addresses Debian bug #679630
+* Applied patch from Francis Russell which should greatly speed up
+  make-style dependency checking in startpar (Fracis's test
+  suggest patch causes just 0.25% number of loop/dependency checks
+  compared to original.)
+  This should close Debian bugs which report startpar is bailing
+  out when checking dependencies.
+  Addresses Debian bugs #609959 and #696359.
+* Documented -f flag.
+  Should address Debian bug #763703.
+* Documented -e flag.
+* Made minor source adjustments so that startpar will compile and
+  run on FreeBSD.
+
+
+startpar 0.60
+================
+* Updated manual page with new copyright.
+* Updated Makefile to work with GCC or Clang.
+* Updated Makefile to no longer use SVN, we use git now.
+* Fixed package building and signing in Makefile.
+* Added short description of startpar to README file.
+* Cleaned up unused temp/defines in Makefile.
+
